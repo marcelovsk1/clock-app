@@ -13,6 +13,13 @@ struct MainView: View {
             StopwatchView()
                 .tabItem {
                     Image(systemName: "stopwatch")
+                    Text("Stopwatch")
+                    
+                }
+            AlarmView()
+                .tabItem {
+                    Image(systemName: "alarm")
+                    Text("Alarm")
                 }
         }
     }
