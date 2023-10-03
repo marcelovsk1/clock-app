@@ -10,6 +10,7 @@ import SwiftUI
 struct AlarmView: View {
     
     @State private var alarms: [Alarm] = []
+    @State private var showAddAlarmView = false
     
     var body: some View {
         NavigationView {
@@ -69,16 +70,29 @@ struct AlarmView: View {
                             if let index =
                                 alarms.firstIndex(of: alarm) {
                                 alarms.remove(at: index)
-                                }
+                            }
                         } label: {
                             Label("Delete", systemImage:
-                            "trash")
+                                    "trash")
                         }
                     }
                 }
             }
             .navigationTitle("Alarms")
             .preferredColorScheme(.dark)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showAddAlarmView.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                            .foregroundColor(.orange)
+                    }
+                }
+            }
+            .sheet(isPresented: $showAddAlarmView) {
+                AddAlarmView(alarms: $alarms)
+            }
         }
     }
 }
@@ -93,3 +107,12 @@ struct Alarm: Identifiable, Equatable {
 #Preview {
     AlarmView()
 }
+
+//    struct AlarmView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            let alarms = Binding.constant([Alarm]())
+//            AlarmView(alarms: alarms)
+//        }
+//    }
+
+ 

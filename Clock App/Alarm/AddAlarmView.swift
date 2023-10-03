@@ -12,14 +12,15 @@ struct AddAlarmView: View {
     @Binding var alarms: [Alarm]
     @State private var date = Date()
     @State private var label = ""
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
             VStack {
                 DatePicker("Select Time", selection: $date,
-                        displayedComponents: [.hourAndMinute])
-                        .datePickerStyle(WheelDatePickerStyle())
-                        .labelsHidden()
+                           displayedComponents: [.hourAndMinute])
+                .datePickerStyle(WheelDatePickerStyle())
+                .labelsHidden()
                 
                 GroupBox {
                     TextField("Label", text: $label)
@@ -35,19 +36,30 @@ struct AddAlarmView: View {
                 ToolbarItem(placement:
                         .navigationBarTrailing) {
                             Button {
-                                
+                                alarms.append(Alarm(time: date, label:
+                                    label, isOn: true))
+                                dismiss()
                             } label: {
-                                
-                            }
-                        }
+                                Text("Save")
+                                    .font(.title3)
+                                    .foregroundColor(.orange)
+                                    .bold()
+                    }
+                }
             }
-            
         }
     }
 }
 
 
 
-#Preview {
-    AlarmView()
+//#Preview {
+//    AlarmView()
+//}
+
+struct AddAlarmView_Previews: PreviewProvider {
+    static var previews: some View {
+        let alarms = Binding.constant([Alarm]())
+        AddAlarmView(alarms: alarms)
+    }
 }
