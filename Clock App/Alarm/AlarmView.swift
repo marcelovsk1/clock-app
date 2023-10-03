@@ -1,0 +1,95 @@
+//
+//  AlarmView.swift
+//  Clock App
+//
+//  Created by Marcelo Amaral Alves on 2023-10-01.
+//
+
+import SwiftUI
+
+struct AlarmView: View {
+    
+    @State private var alarms: [Alarm] = []
+    
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(alarms) { alarm in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(alarm.time, style: .time)
+                                .font(.largeTitle)
+                                .foregroundColor(alarm.isOn ?
+                                    .white : .gray)
+                            Text(alarm.label)
+                                .foregroundColor(alarm.isOn ?
+                                    .white : .gray)
+                        }
+                        
+                        Spacer()
+                        
+                        Toggle("", isOn: Binding<Bool>(
+                            get: {
+                                alarm.isOn
+                            }, set: { newValue in
+                                if let index =
+                                    alarms.firstIndex(of:
+                                                        alarm) {
+                                    alarms[index].isOn =
+                                    newValue
+                                    
+                                }
+                            }
+                        ))
+                    }
+                    .swipeActions(edge: .leading) {
+                        Button {
+                            if let index =
+                                alarms.firstIndex(of: alarm) {
+                                alarms.remove(at: index)
+                            }
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                        .tint(.red)
+                    }
+                    .contextMenu {
+                        Button {
+                            if let index =
+                                alarms.firstIndex(of: alarm) {
+                                alarms[index].isOn.toggle()
+                            }
+                        } label: {
+                            Label(alarm.isOn ? "Turn Off" :
+                                    "Turn On", systemImage:
+                                    alarm.isOn ? "bell.slash.fill"
+                                  : "bell.fill")
+                        }
+                        Button {
+                            if let index =
+                                alarms.firstIndex(of: alarm) {
+                                alarms.remove(at: index)
+                                }
+                        } label: {
+                            Label("Delete", systemImage:
+                            "trash")
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Alarms")
+            .preferredColorScheme(.dark)
+        }
+    }
+}
+
+struct Alarm: Identifiable, Equatable {
+    var id = UUID ()
+    var time: Date
+    var label = ""
+    var isOn: Bool
+}
+
+#Preview {
+    AlarmView()
+}
