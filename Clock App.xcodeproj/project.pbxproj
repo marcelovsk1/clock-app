@@ -14,6 +14,7 @@
 		0B8E36062ACA405D0042E06E /* AddAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E36052ACA405D0042E06E /* AddAlarmView.swift */; };
 		0B8E36232ACCA1470042E06E /* StopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E36222ACCA1470042E06E /* StopwatchView.swift */; };
 		0B8E36252ACCA1990042E06E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E36242ACCA1990042E06E /* MainView.swift */; };
+		0B8E36282ACF12F10042E06E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E36272ACF12F00042E06E /* TimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		0B8E36052ACA405D0042E06E /* AddAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmView.swift; sourceTree = "<group>"; };
 		0B8E36222ACCA1470042E06E /* StopwatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopwatchView.swift; sourceTree = "<group>"; };
 		0B8E36242ACCA1990042E06E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		0B8E36272ACF12F00042E06E /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 			isa = PBXGroup;
 			children = (
 				0B8E35F02AC9F4960042E06E /* Clock App */,
+				0B8E36262ACF12BA0042E06E /* Timer */,
 				0B8E35EF2AC9F4960042E06E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +93,14 @@
 				0B8E36052ACA405D0042E06E /* AddAlarmView.swift */,
 			);
 			path = Alarm;
+			sourceTree = "<group>";
+		};
+		0B8E36262ACF12BA0042E06E /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				0B8E36272ACF12F00042E06E /* TimerView.swift */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B8E36282ACF12F10042E06E /* TimerView.swift in Sources */,
 				0B8E36062ACA405D0042E06E /* AddAlarmView.swift in Sources */,
 				0B8E36032AC9FE1C0042E06E /* AlarmView.swift in Sources */,
 				0B8E36232ACCA1470042E06E /* StopwatchView.swift in Sources */,

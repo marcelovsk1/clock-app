@@ -57,9 +57,9 @@ struct AddAlarmView: View {
 //    AlarmView()
 //}
 
-struct AddAlarmView_Previews: PreviewProvider {
-    static var previews: some View {
-        let alarms = Binding.constant([Alarm]())
-        AddAlarmView(alarms: alarms)
+    struct AddAlarmView_Previews: PreviewProvider {
+        static var previews: some View {
+            let alarms = Binding.constant([Alarm]())
+            AddAlarmView(alarms: alarms)
+        }
     }
-}
